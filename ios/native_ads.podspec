@@ -16,7 +16,7 @@ Flutter native ads with PlatformView
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'Google-Mobile-Ads-SDK'
+  s.dependency 'Google-Mobile-Ads-SDK', '~> 7.69.0'
 
   s.ios.deployment_target = '10.0'
 

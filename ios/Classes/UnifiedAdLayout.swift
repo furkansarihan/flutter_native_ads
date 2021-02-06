@@ -25,7 +25,7 @@ class UnifiedAdLayout : NSObject, FlutterPlatformView {
     
     private weak var headlineView: UILabel!
     private weak var bodyView: UILabel!
-    private weak var callToActionView: InsetLabel!
+    private weak var callToActionView: UILabel!
     private weak var attributionView: UILabel!
 
     private weak var mediaView: GADMediaView?
@@ -64,7 +64,7 @@ class UnifiedAdLayout : NSObject, FlutterPlatformView {
     private func mappingView() {
         headlineView = unifiedNativeAdView.headlineView as? UILabel
         bodyView = unifiedNativeAdView.bodyView as? UILabel
-        callToActionView = unifiedNativeAdView.callToActionView as! InsetLabel
+        callToActionView = unifiedNativeAdView.callToActionView as? UILabel
         mediaView = unifiedNativeAdView.mediaView
         guard let attributionLabel = (unifiedNativeAdView as UIView).subviews.first(where: { (v) -> Bool in
             v.restorationIdentifier == "flutter_native_ad_attribution_view_id"
@@ -161,7 +161,7 @@ extension UnifiedAdLayout : GADUnifiedNativeAdLoaderDelegate {
         unifiedNativeAdView.nativeAd = nativeAd
         
         mediaView?.mediaContent = nativeAd.mediaContent
-        iconView?.image = nativeAd.mediaContent.mainImage ?? nativeAd.images?.first?.image ?? nativeAd.icon?.image
+        iconView?.image = nativeAd.icon?.image ?? nativeAd.images?.first?.image
         starRatingView?.text = String(describing: nativeAd.starRating?.doubleValue)
         storeView?.text = nativeAd.store
         priceView?.text = nativeAd.price
