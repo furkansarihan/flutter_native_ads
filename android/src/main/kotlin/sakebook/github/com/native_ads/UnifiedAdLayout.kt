@@ -62,7 +62,9 @@ class UnifiedAdLayout(
     private val attributionText = arguments["text_attribution"] as String
 
     init {
-        applyTheme(dark = arguments["dark"] as Boolean)
+        if (arguments["dark"] != null) {
+            applyTheme(dark = arguments["dark"] as Boolean)
+        }
         setupTestDevices(arguments["test_devices"] as MutableList<String>?)
         adLoadingStack.notifyNewAdLayoutCreated(this)
         setupMethodCallHandler()
